@@ -1,0 +1,39 @@
+name: Socials
+version: 1.1.0
+api-version: 1.16
+description: Set socials and display them in messages
+author: cococow123
+main: me.cococow123.socials.Socials
+commands:
+  twitter:
+      description: Send message with twitter socials displayed.
+      aliases: [twitter]
+      usage: /<command>
+  instagram:
+      description: Send message with instagram socials displayed.
+      aliases: [instagram]
+      usage: /<command>
+  socials:
+      description: Get and set socials
+      aliases: [socials]
+      usage: /<command>
+ 
+permissions:
+    socials.twitter:
+        description: Allows player to send message with twitter socials displayed.
+        default: true
+    socials.instagram:
+        description: Allows player to send message with instagram socials displayed.
+        default: true
+    socials.view:
+        description: Allows player to view their socials.
+        default: true
+    socials.viewothers:
+        description: Allows player to view other's socials.
+        default: op
+    socials.set:
+        description: Allows player to set their socials.
+        default: true
+    socials.reload:
+        description: Allows player to reload the config
+        default: op
