@@ -30,24 +30,24 @@ public class Commands implements CommandExecutor {
 					Player p = (Player) sender;
 					sendSocials(sender, p, false);
 				} else {
-					sender.sendMessage(prefix + ChatColor.GRAY + "You must be a player to run this command!");
+					sender.sendMessage(prefix + ChatColor.GRAY + "Debes ser un jugador para ejecutar ese comando!");
 				}
 			} else if (args.length == 1) {
 				if (args[0].equalsIgnoreCase("twitter")) {
 					sender.sendMessage(sender instanceof Player
-							? prefix + ChatColor.WHITE + "Set your twitter with: " + ChatColor.GOLD
-									+ "/socials twitter @<username>"
-							: prefix + ChatColor.GRAY + "You must be a player to run this command!");
+							? prefix + ChatColor.WHITE + "Establezca su twitter con: " + ChatColor.GOLD
+									+ "/socials twitter @<Nombre de usuario>"
+							: prefix + ChatColor.GRAY + "Debes ser un jugador para ejecutar ese comandon!");
 				} else if (args[0].equalsIgnoreCase("instagram")) {
 					sender.sendMessage(sender instanceof Player
-							? prefix + ChatColor.WHITE + "Set your instagram with: " + ChatColor.GOLD
-									+ "/socials instagram @<username>"
-							: prefix + ChatColor.GRAY + "You must be a player to run this command!");
+							? prefix + ChatColor.WHITE + "Establezca su instagram con: " + ChatColor.GOLD
+									+ "/socials instagram @<Nombre de usuario>"
+							: prefix + ChatColor.GRAY + "Debes ser un jugador para ejecutar ese comandon!");
 				} else if (args[0].equalsIgnoreCase("reload")) {
 					if (sender.hasPermission("socials.reload")) {
 						sender.sendMessage(prefix + ChatColor.WHITE + "Config reloaded!");
 					} else {
-						sender.sendMessage(prefix + ChatColor.GRAY + "You do not have permission to do that!");
+						sender.sendMessage(prefix + ChatColor.GRAY + "No tienes permisos para realizar esto!");
 					}
 				} else {
 					// check username
@@ -58,7 +58,7 @@ public class Commands implements CommandExecutor {
 							sendSocials(sender, target, true);
 							return true;
 						} else {
-							sender.sendMessage(prefix + ChatColor.GRAY + "User offline.");
+							sender.sendMessage(prefix + ChatColor.GRAY + "Usuario desconectado o inexistente.");
 						}
 					} else {
 						if (sender instanceof Player) {
@@ -75,24 +75,24 @@ public class Commands implements CommandExecutor {
 								args[1].replaceAll("@", ""))) {
 							if (sender.hasPermission("socials.set")) {
 								config.setSocialTwitter(p.getUniqueId(), args[1].replaceAll("@", ""));
-								sender.sendMessage(prefix + ChatColor.WHITE + "Your twitter username was set!");
+								sender.sendMessage(prefix + ChatColor.WHITE + "Te has creado tu Twutter correctamente!");
 							} else {
-								sender.sendMessage(prefix + ChatColor.GRAY + "You do not have permission to do that!");
+								sender.sendMessage(prefix + ChatColor.GRAY + "No tienes permisos para realizar esto!");
 							}
 						} else {
-							sender.sendMessage(prefix + ChatColor.GRAY + "Please enter a valid username!");
+							sender.sendMessage(prefix + ChatColor.GRAY + "Por favor, ingresa un nombre de usuario valido!");
 						}
 					} else if (args[0].equalsIgnoreCase("instagram")) {
 						if (Pattern.matches("[a-zA-Z0-9_]{1,20}", args[1].replaceAll("@", ""))) {
 							if (sender.hasPermission("socials.set")) {
 								config.setSocialInstagram(p.getUniqueId(), args[1].replaceAll("@", ""));
-								sender.sendMessage(prefix + ChatColor.WHITE + "Your instagram username was set!");
+								sender.sendMessage(prefix + ChatColor.WHITE + "Te has creado tu Instagram correctamente!");
 							} else {
-								sender.sendMessage(prefix + ChatColor.GRAY + "You do not have permission to do that!");
+								sender.sendMessage(prefix + ChatColor.GRAY + "No tienes permisos para realizar esto!");
 							}
 
 						} else {
-							sender.sendMessage(prefix + ChatColor.GRAY + "Please enter a valid username!");
+							sender.sendMessage(prefix + ChatColor.GRAY + "Por favor, ingresa un nombre de usuario valido!");
 						}
 					}
 				}
@@ -106,11 +106,11 @@ public class Commands implements CommandExecutor {
 
 					if (twitter == null) {
 						sender.sendMessage(
-								prefix + ChatColor.GRAY + "You need to set your twitter! /socials twitter <username>");
+								prefix + ChatColor.GRAY + "Para realizar esto necesitas crearte tu twitter /socials twitter <Nombre de usuario>");
 					} else {
 
 						if (args.length == 0) {
-							sender.sendMessage(prefix + ChatColor.GRAY + "Enter your message! /twitter <message>");
+							sender.sendMessage(prefix + ChatColor.GRAY + "Envía tu mensaje! /twitter <mensaje>");
 							return true;
 						}
 						String message = "";
@@ -124,10 +124,10 @@ public class Commands implements CommandExecutor {
 								config.getTwitterFormat().replaceAll("%username%", twitter)) + message);
 					}
 				} else {
-					sender.sendMessage(prefix + ChatColor.GRAY + "You must be a player to run this command!");
+					sender.sendMessage(prefix + ChatColor.GRAY + "Debes ser un jugador para ejecutar este comando!");
 				}
 			} else {
-				sender.sendMessage(prefix + ChatColor.GRAY + "You do not have permission to do that!");
+				sender.sendMessage(prefix + ChatColor.GRAY + "No tienes permisos para realizar esto!");
 			}
 
 		} else if (cmd.getName().equalsIgnoreCase("instagram")) {
@@ -138,11 +138,11 @@ public class Commands implements CommandExecutor {
 
 					if (instagram == null) {
 						sender.sendMessage(prefix + ChatColor.GRAY
-								+ "You need to set your instagram! /socials instagram <username>");
+								+ "Para realizar esto necesitas crearte tu twitter /socials instagram <Nombre de usuario>");
 					} else {
 
 						if (args.length == 0) {
-							sender.sendMessage(prefix + ChatColor.GRAY + "Enter your message! /instagram <message>");
+							sender.sendMessage(prefix + ChatColor.GRAY + "Envía tu mensaje! /twitter <mensaje>");
 							return true;
 						}
 						String message = "";
@@ -156,10 +156,10 @@ public class Commands implements CommandExecutor {
 								config.getInstagramFormat().replaceAll("%username%", instagram)) + message);
 					}
 				} else {
-					sender.sendMessage(prefix + ChatColor.GRAY + "You must be a player to run this command!");
+					sender.sendMessage(prefix + ChatColor.GRAY + "Debes ser un jugador para ejecutar este comando!");
 				}
 			} else {
-				sender.sendMessage(prefix + ChatColor.GRAY + "You do not have permission to do that!");
+				sender.sendMessage(prefix + ChatColor.GRAY + "No tienes permisos para realizar esto!");
 			}
 		}
 
@@ -174,11 +174,11 @@ public class Commands implements CommandExecutor {
 			String instagram = config.getSocialInstagram(p.getUniqueId());
 
 			if (twitter == null && instagram == null) {
-				sender.sendMessage(viewOther ? prefix + ChatColor.GRAY + "That user does not have any socials set."
-						: prefix + ChatColor.GRAY + "You do not have any socials set.");
+				sender.sendMessage(viewOther ? prefix + ChatColor.GRAY + "Ese usuario no tiene redes sociales."
+						: prefix + ChatColor.GRAY + "No tienes redes sociales aún.");
 			} else {
 				sender.sendMessage(
-						prefix + ChatColor.WHITE + (viewOther ? p.getDisplayName() + "'s Socials:" : "Your socials"));
+						prefix + ChatColor.WHITE + (viewOther ? p.getDisplayName() + "'s Socials:" : "Tus redes"));
 				if (twitter != null) {
 					sender.sendMessage(ChatColor.GOLD + "  ✦ Twitter: " + ChatColor.WHITE + "@" + twitter);
 				}
@@ -187,7 +187,7 @@ public class Commands implements CommandExecutor {
 				}
 			}
 		} else {
-			sender.sendMessage(prefix + ChatColor.GRAY + "You do not have permission to do that!");
+			sender.sendMessage(prefix + ChatColor.GRAY + "No tienes permisos para realizar esto!");
 		}
 
 	}
